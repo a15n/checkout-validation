@@ -1,0 +1,84 @@
+/*
+font-family: Arial, Helvetica, sans-serif;
+font-size: 14px;
+line-height: 97px;
+color: #a32721;
+
+font-family: 'Bree Serif', Georgia, serif;
+font-size: 22px;
+line-height: 20px;
+color: #ffffff;
+
+font-family: arial, Helvetica, sans-serif;
+font-size: 28px;
+line-height: 40px;
+color: #333333;
+
+font-family: Arial, Helvetica, sans-serif;
+font-size: 17px;
+line-height: 40px;
+color: #333333;
+
+font-family: Arial, Helvetica, sans-serif;
+font-size: 14px;
+line-height: 20px;
+color: #222222;
+
+font-family: Arial, Helvetica, sans-serif;
+font-size: 12px;
+line-height:20px;
+color: #ffffff;
+
+*/
+.error {
+	color: red;
+}
+
+body {
+	background-color: #EAE9E9;
+}
+
+.navbar {
+	background-color: #AC1F29;
+	margin: 0 -15px;
+	border-radius: 0;
+	border: none;
+}
+
+.container {
+	background-color: white
+}
+
+
+@for $i from 10 through 60 {
+	$color: grey;
+	@if ($i %2 == 0) {
+		.helv-#{$i}-#{$color} {
+			font-size: #{$i}px;
+			font-family: helvetica;
+			line-height: #{$i * 1.1}px;
+			color: #565A5C;
+		}
+	}
+}
+
+@for $i from 10 through 60 {
+	$color: white;
+	.helv-#{$i}-#{$color} {
+		font-size: #{$i}px;
+		font-family: helvetica;
+		line-height: #{$i * 1.1}px;
+		color: $color;
+	}
+}
+
+@for $i from 10 through 60 {
+	$color: red;
+	.helv-#{$i}-#{$color} {
+		font-size: #{$i}px;
+		font-family: helvetica;
+		line-height: #{$i * 1.1}px;
+		color: #FF5A5F;
+	}
+}
+

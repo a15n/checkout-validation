@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Andrew's Checkout</title>
+
+  <!-- build:css css/tidymin.css-->
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/bootstrap.css">
+  <link rel="stylesheet" href="css/main.css">
+  <!-- /build -->
+
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.18/angular.min.js"></script>
+  <script src="js/angular-validation.js"></script>
+  <script src="js/angular-validation-rule.js"></script>
+
+</head>
+
+<body ng-app="checkoutForm">
+  <div class="container" ng-controller="CheckoutController">
+    <nav class="navbar navbar-default" role="navigation">
+      <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <span class="navbar-brand helv-26-white"><i class="fa fa-heart-o fa-rotate-180 fa-lg pull-left"></i>airbnb</span>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse helv-20-white" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav navbar-right ">
+            <!-- Profile -->
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Andrew <span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="#">Dashboard</a>
+                </li>
+                <li><a href="#">Your Listing</a>
+                </li>
+                <li><a href="#">Your Reservation</a>
+                </li>
+                <li><a href="#">Your Trips</a>
+                </li>
+                <li><a href="#">Wish Lists</a>
+                </li>
+                <li><a href="#">Groups</a>
+                </li>
+                <li><a href="#">Invite Friends <span class="">New</span></a>
+                </li>
+                <li><a href="#">Edit Profile</a>
+                </li>
+                <li><a href="#">Account</a>
+                </li>
+                <li><a href="#">Log Out</a>
+                </li>
+              </ul>
+            </li>
+            <!-- Help -->
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Help <span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="#">Visit the Help Center >></a>
+                </li>
+                <li><a href="#">How do I edit my profile or profile photo?</a>
+                </li>
+                <li><a href="#">What is a cancellation policy?</a>
+                </li>
+                <li><a href="#">See all FAQs?</a>
+                </li>
+              </ul>
+            </li>
+
+        </div>
+        <!-- /.navbar-collapse -->
+      </div>
+      <!-- /.container-fluid -->
+    </nav>
+
+
+    <div class="row">
+      <main class="col col-sm-offset-2 col-sm-8">
+        <form name="checkoutForm" novalidate ng-submit="buyNow()">
+          <!--           <div class="box">
+            <p>Do you have a promo code?</p>
+            <div class="btn">Yes, I have a promo code</div>
+          </div> -->
+
+          <!--           <div class="box">
+            <div class="smiley-face"></div>
+            <p>You are subscribing to our
+              <strong>Annual Plan
+                <br>You will be billed $120.00 every 12 months.</strong>
+            </p>
+          </div> -->
+          <legend>Credit Card Details</legend>
+
+          <p>Credit card number *</p>
+          <input type="text" ng-model="user.card" required/>
+          <p>Expiration *</p>
+          <select ng-model="user.month" required>
+            <option value="01">01 - January</option>
+            <option value="02">02 - February</option>
+            <option value="03">03 - March</option>
+            <option value="04">04 - April</option>
+            <option value="05">05 - May</option>
+            <option value="06">06 - June</option>
+            <option value="07">07 - July</option>
+            <option value="08">08 - August</option>
+            <option value="09">09 - September</option>
+            <option value="10">10 - October</option>
+            <option value="11">11 - November</option>
+            <option value="12">12 - December</option>
+          </select>&nbsp;/
+          <select ng-model="user.month">
+            <option value="2014">2014</option>
+            <option value="2015">2015</option>
+            <option value="2016">2016</option>
+            <option value="2017">2017</option>
+            <option value="2018">2018</option>
+            <option value="2019">2019</option>
+            <option value="2020">2020</option>
+            <option value="2021">2021</option>
+            <option value="2022">2022</option>
+            <option value="2023">2023</option>
+            <option value="2024">2024</option>
+            <option value="2025">2025</option>
+            <option value="2026">2026</option>
+            <option value="2027">2027</option>
+            <option value="2028">2028</option>
+            <option value="2029">2029</option>
+          </select>
+
+          <p>CCV *</p>
+          <input type="text" ng-model="user.cvv" required>
+
+          <p>Payment data is kept secure using strong encryption standards.</p>
+
+          <legend>Billing Address</legend>
+          <p>First name *</p>
+          <input type="text" ng-model="user.first" required>
+          <p>Last name *</p>
+          <input type="text" ng-model="user.last" required>
+          <p>Company</p>
+          <input type="text" ng-model="user.company">
+          <p>Street address 1 *</p>
+          <input type="text" ng-model="user.streetOne" required>
+          <p>Street address 2</p>
+          <input type="text" ng-model="user.streetTwo">
+          <p>City *</p>
+          <input type="text" ng-model="user.city" required>
+          <p>Country *</p>
+          <input type="text" ng-model="user.country" placeholder="United States of America" required>
+          <p>State *</p>
+          <select class="select" ng-model="user.state" required>
+            <option value=""></option>
+            <option value="AK">Alaska</option>
+            <option value="AL">Alabama</option>
+            <option value="AS">American Samoa</option>
+            <option value="AZ">Arizona</option>
+            <option value="AR">Arkansas</option>
+            <option value="CA">California</option>
+            <option value="CO">Colorado</option>
+            <option value="CT">Connecticut</option>
+            <option value="DE">Delaware</option>
+            <option value="DC">District of Columbia</option>
+            <option value="FM">Federated States of Micronesia</option>
+            <option value="FL">Florida</option>
+            <option value="GA">Georgia</option>
+            <option value="GU">Guam</option>
+            <option value="HI">Hawaii</option>
+            <option value="ID">Idaho</option>
+            <option value="IL">Illinois</option>
+            <option value="IN">Indiana</option>
+            <option value="IA">Iowa</option>
+            <option value="KS">Kansas</option>
+            <option value="KY">Kentucky</option>
+            <option value="LA">Louisiana</option>
+            <option value="ME">Maine</option>
+            <option value="MH">Marshall Islands</option>
+            <option value="MD">Maryland</option>
+            <option value="MA">Massachusetts</option>
+            <option value="MI">Michigan</option>
+            <option value="MN">Minnesota</option>
+            <option value="MS">Mississippi</option>
+            <option value="MO">Missouri</option>
+            <option value="MT">Montana</option>
+            <option value="NE">Nebraska</option>
+            <option value="NV">Nevada</option>
+            <option value="NH">New Hampshire</option>
+            <option value="NJ">New Jersey</option>
+            <option value="NM">New Mexico</option>
+            <option value="NY">New York</option>
+            <option value="NC">North Carolina</option>
+            <option value="ND">North Dakota</option>
+            <option value="MP">Northern Mariana Islands</option>
+            <option value="OH">Ohio</option>
+            <option value="OK">Oklahoma</option>
+            <option value="OR">Oregon</option>
+            <option value="PW">Palau</option>
+            <option value="PA">Pennsylvania</option>
+            <option value="PR">Puerto Rico</option>
+            <option value="RI">Rhode Island</option>
+            <option value="SC">South Carolina</option>
+            <option value="SD">South Dakota</option>
+            <option value="TN">Tennessee</option>
+            <option value="TX">Texas</option>
+            <option value="UT">Utah</option>
+            <option value="VT">Vermont</option>
+            <option value="VI">Virgin Islands</option>
+            <option value="VA">Virginia</option>
+            <option value="WA">Washington</option>
+            <option value="WV">West Virginia</option>
+            <option value="WI">Wisconsin</option>
+            <option value="WY">Wyoming</option>
+            <option value="AE">Armed Forces Africa</option>
+            <option value="AA">Armed Forces Americas (except Canada)</option>
+            <option value="AE">Armed Forces Canada</option>
+            <option value="AE">Armed Forces Europe</option>
+            <option value="AE">Armed Forces Middle East</option>
+            <option value="AP">Armed Forces Pacific</option>
+          </select>
+          <p>Zipe code *</p>
+          <input type="text" ng-model="user.zip" required>
+          <p>Phone *</p>
+          <input ng-model-options="{updateOn: 'blur'}" type="text" name="phone" ng-model="user.phone" ng-minLength=10 ng-maxLength=10 required>
+          <div class="error" ng-show="checkoutForm.phone.$dirty && checkoutForm.phone.$invalid">
+            <small class="error" ng-show="checkoutForm.phone.$error.required">Your phone number is required.</small>
+            <small class="error" ng-show="checkoutForm.phone.$error.minlength">Your phone number is required to be 10 digits.</small>
+            <small class="error" ng-show="checkoutForm.email.$error.maxlength">Your phone number is required to be 10 digits.</small>
+          </div>
+          <br>
+          <input type="checkbox" ng-model="user.sameAddress">
+          <strong>Ship items to the billing address above</strong>
+          <br>
+          <!-- different address if different -->
+          <!-- ng-disabled="checkoutForm.$invalid" -->
+          <button type="submit">BUY NOW</button>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+        </form>
+      </main>
+    </div>
+
+  </div>
+
+  <!-- build:js js/main.js -->
+  <script src="js/main.js"></script>
+  <!-- /build -->
+
+
+</body>
+
+</html>
