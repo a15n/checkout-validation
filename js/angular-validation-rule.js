@@ -28,6 +28,9 @@
           credit: {
             error: 'Must have exactly 16 digits'
           },
+          number: {
+            error: 'this is not a number'
+          },
           required: {
             error: 'This field is required'
           },

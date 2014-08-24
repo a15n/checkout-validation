@@ -24,6 +24,7 @@
 
 <body ng-app="checkoutForm">
   <div class="container" ng-controller="CheckoutController">
+
     <nav class="navbar bree-serif-22-white" role="navigation">
       <div class="container-fluid">
         <div class="navbar-header">
@@ -46,65 +47,44 @@
         </div>
       </div>
     </nav>
+
     <div class="row">
       <div class="col col-sm-offset-2 col-sm-8">
-        <form class="row" name="checkoutForm" novalidate ng-submit="checkout()">
-          <div class="col col-sm-12">
+        <form class="row" name="checkoutForm" novalidate ng-submit="submit(checkoutForm)">
 
+          <div class="col col-sm-12">
             <legend>Credit Card Details</legend>
+            <p>CCV *</p>
+            <input type="text" name="ccvName" ng-model="checkoutForm.ccv" validator="required, ccv" valid-method="blur">
+
+            <p>Payment data is kept secure using strong encryption standards.</p>
 
             <p>Credit card number *</p>
             <input type="text" name="creditName" ng-model="checkoutForm.credit" validator="required, credit" valid-method="blur">
 
-            <!-- PUT EXPIRATION HERE -->
 
-            <p>CCV *</p>
-            <input type="text" name="ccvName" ng-model="checkoutForm.ccv" validator="required, ccv" valid-method="blur">
-            <p>Payment data is kept secure using strong encryption standards.</p>
-
-            <legend>Billing Address</legend>
-
-            <p>First name *</p>
-            <input type="text" name="firstName" ng-model="user.first" validator="required" valid-method="blur">
-            <p>{{user.first}}</p>
-
-            <p>Last name *</p>
-            <input type="text" name="lastName" ng-model="checkoutForm.last" validator="required" valid-method="blur">
-
-            <p>Company</p>
-            <input type="text" name="companyName" ng-model="checkoutForm.company">
-
-            <p>Street address 1 *</p>
-            <input type="text" name="streetOneName" ng-model="checkoutForm.street1" validator="required" valid-method="blur">
-
-            <p>Street address 2</p>
-            <input type="text" name="streetTwoName" ng-model="checkoutForm.street2">
-
-            <p>City *</p>
-            <input type="text" name="cityName" ng-model="checkoutForm.city" validator="required" valid-method="blur">
-
-            <p>Country *</p>
-            <input type="text" name="countryName" ng-model="checkoutForm.country" validator="required" valid-method="blur">
-
-            <p>Zip Code *</p>
-            <input type="text" name="zipName" ng-model="checkoutForm.zip" validator="required, zip" valid-method="blur">
-
-            <p>Phone Number *</p>
-            <input type="text" name="phoneName" ng-model="checkoutForm.phone" validator="required, phone" valid-method="blur">
-
-            <p>
-              <input type="checkbox" checked>
-              <strong>Ship items to the billing address above</strong>
-            </p>
-
+            <div address-template ng-model="Billing"></div>
             <p>
               <input type="checkbox" checked>Sign up for our monthly newsletter
             </p>
+            <p>
+              Shipping address same as billing address?
+              <br>
+              <form>
+                <input type="radio" name="difAddress" value="yes" ng-click="difAddress = false">Yes
+                <br>
+                <input type="radio" name="difAddress" value="no" ng-click="difAddress = true">No
+              </form>
+            </p>
+
+            <div ng-if="difAddress">
+              <div address-template ng-model="Shipping"></div>
+            </div>
 
             <br>
 
-            <button type="submit">BUY NOW</button>
-
+            <button type="submit" ng-disabled="checkoutForm.$invalid || difAddress === undefined">BUY NOW</button>
+            <div address></div>
           </div>
         </form>
         <br>
@@ -118,6 +98,8 @@
   <script src="js/main.js"></script>
   <script src="js/jquery.js"></script>
   <!-- /build -->
+
+
 
 
 </body>

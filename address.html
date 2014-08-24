@@ -1,0 +1,25 @@
+<legend>{{ngModel}} address</legend>
+
+<p>First name *</p>
+<input type="text" name="firstName" ng-model="checkoutForm.first" validator="required" valid-method="blur">
+
+<p>Last name *</p>
+<input type="text" name="lastName" ng-model="checkoutForm.last" validator="required" valid-method="blur">
+
+<p>Street address 1 *</p>
+<input type="text" name="streetOneName" ng-model="checkoutForm.street1" validator="required" valid-method="blur">
+
+<p>Street address 2</p>
+<input type="text" name="streetTwoName" ng-model="checkoutForm.street2" valid-method="blur">
+
+<p>City *</p>
+<input type="text" name="cityName" ng-model="checkoutForm.city" validator="required" valid-method="blur">
+
+<p>Country *</p>
+<input type="text" name="countryName" ng-model="checkoutForm.country" validator="required" valid-method="blur">
+
+<p>Phone Number *</p>
+<input type="text" name="phoneName" ng-model="checkoutForm.phone" validator="required, phone" valid-method="blur">
+
+<p>Zip Code *</p>
+<input type="text" name="required, zip" ng-model="checkoutForm.zip" validator="required, zip" valid-method="blur">
