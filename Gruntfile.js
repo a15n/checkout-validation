@@ -39,7 +39,7 @@ module.exports = function(grunt) {
           'js/angular-validation.js.js',
           'js/angular-validation-rule.js.js'
         ],
-        dest: 'dist/js/final.js'
+        dest: 'dist/js/main.js'
       }
     },
     // Stav this
@@ -62,7 +62,7 @@ module.exports = function(grunt) {
       main: {
         files: [{
           expand: true,
-          src: ['**', '!**/node_modules/**'],
+          src: ['**', '!dist', '!**/node_modules/**', '!address.html', '!Gruntfile.js', '!package.json', '!README.md', '!TODO.md'],
           dest: 'dist/'
         }, ]
       }
@@ -71,7 +71,7 @@ module.exports = function(grunt) {
     cssmin: {
       combine: {
         files: {
-          'dist/css/main.css': ['dist/css/main.css']
+          'dist/css/main.css': ['dist/css/bootstrap.css', 'dist/css/normalize.css','dist/css/main.css']
         }
       }
     },
@@ -138,14 +138,6 @@ module.exports = function(grunt) {
           'dist/js/final.js': ['dist/js/final.js']
         }
       }
-    },
-    // Removes unused CSS from dist/index.html & outputs dist/css/main.css
-    uncss: {
-      dist: {
-        files: {
-          'dist/css/main.css': ['dist/index.html']
-        }
-      }
     }
   });
 
@@ -162,10 +154,9 @@ module.exports = function(grunt) {
   grunt.registerTask('build', [
     'clean:begin',
     'copy',
-    'uncss',
     'cssmin',
-    'processhtml',
-    'concat',
+    // 'processhtml',
+    // 'concat',
     'htmlmin',
     // 'clean:end'
   ]);
@@ -174,5 +165,9 @@ module.exports = function(grunt) {
   grunt.registerTask('test', [
     'clean:end'
   ]);
+
+  grunt.registerTask('clear', [
+    'clean:'
+  ])
 
 };

@@ -6,11 +6,11 @@
   <title>Andrew's Checkout</title>
 
   <!-- internal CSS -->
-  <!-- build:css css/main.css-->
+
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/bootstrap.css">
   <link rel="stylesheet" href="css/main.css">
-  <!-- /build -->
+
 
   <!-- external CSS -->
   <link href='http://fonts.googleapis.com/css?family=Bree+Serif' rel='stylesheet' type='text/css'>
@@ -24,7 +24,29 @@
 <body ng-app="checkoutForm">
   <div class="container" ng-controller="CheckoutController">
 
-    <div navbar-template class="nav-holder"></div>
+    <nav class="navbar bree-serif-22-white" role="navigation">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <span class="navbar-brand bree-serif-22-white">Love with Food</span>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right ">
+            <li>
+              <a href="#">About</a>
+            </li>
+            <li>
+              <a href="#">Snackbox</a>
+            </li>
+            <li>
+              <a href="#">Shop</a>
+            </li>
+            <li>
+              <a href="#">Recipes</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
 
     <div class="row">
       <div class="col col-sm-offset-2 col-sm-8">

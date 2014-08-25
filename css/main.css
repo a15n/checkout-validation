@@ -3,14 +3,9 @@ body {
   background-color: #EAE9E9;
 }
 
-.nav-holder {
-  background-color: #AC1F29;
-  height: 50px;
-  margin: 0 -15px;
-}
-
 .navbar {
   background-color: #ac1f29;
+  margin: 0 -15px;
   border-radius: 0;
   border: none;
   color: #ffffff;
@@ -42,7 +37,7 @@ input {
 }
 
 .error {
-  color: red;
+  color: red !important;
 }
 
 .container {
