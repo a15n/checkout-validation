@@ -34,9 +34,12 @@ module.exports = function(grunt) {
     concat: {
       dist: {
         src: [
-          // 'js/_main.js'
+          'js/main.js',
+          'js/jquery.js',
+          'js/angular-validation.js.js',
+          'js/angular-validation-rule.js.js'
         ],
-        // dest: 'dist/js/final.js'
+        dest: 'dist/js/final.js'
       }
     },
     // Stav this
@@ -59,7 +62,7 @@ module.exports = function(grunt) {
       main: {
         files: [{
           expand: true,
-          src: ['**', '!**/excludeThisDirectory/**'],
+          src: ['**', '!**/node_modules/**'],
           dest: 'dist/'
         }, ]
       }
@@ -68,7 +71,7 @@ module.exports = function(grunt) {
     cssmin: {
       combine: {
         files: {
-          'dist/css/_________.css': ['dist/css/________.css', 'dist/css/________.css', 'dist/css/______.css']
+          'dist/css/main.css': ['dist/css/main.css']
         }
       }
     },
@@ -82,7 +85,7 @@ module.exports = function(grunt) {
           minifyJS: true
         },
         files: {
-          'dist/________.html': 'dist/______.html'
+          'dist/index.html': 'dist/index.html'
         }
       }
     },
@@ -106,7 +109,7 @@ module.exports = function(grunt) {
     processhtml: {
       dist: {
         files: {
-          'dist/______.html': ['_______.html']
+          'dist/index.html': ['dist/index.html']
         }
       }
     },
@@ -128,21 +131,19 @@ module.exports = function(grunt) {
       }
     },
 
-    // Uglifies all CSS
+    // Uglifies all CSS and JS
     uglify: {
       my_target: {
         files: {
-          'dist/js/final.js': ['dist/js/final.js'],
-          'dist/js/mobile.js': ['dist/js/mobile.js']
+          'dist/js/final.js': ['dist/js/final.js']
         }
       }
     },
-    // Removes any unused Css from key after analyzing value
+    // Removes unused CSS from dist/index.html & outputs dist/css/main.css
     uncss: {
       dist: {
         files: {
-          'dist/css/tidymin.css': ['dist/index.html'],
-          'dist/css/mobile.css': ['dist/mobile.html'],
+          'dist/css/main.css': ['dist/index.html']
         }
       }
     }
@@ -161,39 +162,17 @@ module.exports = function(grunt) {
   grunt.registerTask('build', [
     'clean:begin',
     'copy',
-    'imagemin',
     'uncss',
     'cssmin',
     'processhtml',
     'concat',
     'htmlmin',
-    'clean:end'
+    // 'clean:end'
   ]);
 
   // Creates the 'test' task
   grunt.registerTask('test', [
-    'sass'
+    'clean:end'
   ]);
 
 };
-
-// var toAddToPackageJson = {
-//   "devDependencies": {
-//     "grunt": "^0.4.0",
-//     "grunt-contrib-clean": "^0.6.0",
-//     "grunt-contrib-concat": "^0.5.0",
-//     "grunt-contrib-connect": "^0.1.2",
-//     "grunt-contrib-copy": "^0.5.0",
-//     "grunt-contrib-cssmin": "^0.10.0",
-//     "grunt-contrib-htmlmin": "^0.3.0",
-//     "grunt-contrib-imagemin": "^0.8.0",
-//     "grunt-contrib-livereload": "^0.1.1",
-//     "grunt-contrib-uglify": "^0.5.1",
-//     "grunt-open": "^0.2.0",
-//     "grunt-processhtml": "^0.3.3",
-//     "grunt-regarde": "^0.1.1",
-//     "grunt-uncss": "^0.3.5",
-//     "matchdep": "^0.1.1",
-//     "time-grunt": "^0.4.0"
-//   }
-// }
