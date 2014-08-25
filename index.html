@@ -9,6 +9,7 @@
 
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/bootstrap.css">
+  <link rel="stylesheet" href="bootstrap.css.map">
   <link rel="stylesheet" href="css/main.css">
 
 
@@ -64,7 +65,9 @@
             <p>CCV *</p>
             <input type="text" name="ccvName" ng-model="checkoutForm.ccv" validator="required, ccv" valid-method="blur">
 
-            <p>Payment data is kept secure using strong encryption standards.</p>
+            <p>Payment data is kept secure using strong encryption standards.
+              <br>We accept the following cards...</p>
+            <img src="images/cards.png" alt="Visa, Mastercard, American Express, Discover Card">
 
             <legend>Billing Address</legend>
 
