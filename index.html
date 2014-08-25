@@ -6,7 +6,7 @@
   <title>Andrew's Checkout</title>
 
   <!-- internal CSS -->
-  <!-- build:css css/tidymin.css-->
+  <!-- build:css css/main.css-->
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/bootstrap.css">
   <link rel="stylesheet" href="css/main.css">
@@ -52,14 +52,8 @@
             <p>Last name *</p>
             <input type="text" name="lastName" ng-model="checkoutForm.last" validator="required" valid-method="blur">
 
-            <p>Company</p>
-            <input type="text" name="companyName" ng-model="checkoutForm.company">
-
-            <p>Street address 1 *</p>
-            <input type="text" name="streetOneName" ng-model="checkoutForm.streetOne" validator="required" valid-method="blur">
-
-            <p>Street address 2</p>
-            <input type="text" name="streetTwoName" ng-model="checkoutForm.streetTwo">
+            <p>Street address *</p>
+            <input type="text" name="streetName" ng-model="checkoutForm.street" validator="required" valid-method="blur">
 
             <p>City *</p>
             <input type="text" name="cityName" ng-model="checkoutForm.city" validator="required" valid-method="blur">
@@ -85,9 +79,9 @@
               Shipping address same as billing address?
               <br>
               <form>
-                <input type="radio" name="difAddress" value="yes" ng-click="difAddress = false">&nbsp;Yes
+                <input class="small-input" type="radio" name="difAddress" value="yes" ng-click="difAddress = false">&nbsp;Yes
                 <br>
-                <input type="radio" name="difAddress" value="no" ng-click="difAddress = true">&nbsp;No
+                <input class="small-input" type="radio" name="difAddress" value="no" ng-click="difAddress = true">&nbsp;No
               </form>
             </p>
 
@@ -100,14 +94,8 @@
               <p>Last name *</p>
               <input type="text" name="shippingLastName" ng-model="checkoutForm.shippingLast" validator="required" valid-method="blur">
 
-              <!-- <p>Company</p>
-              <input type="text" name="shippingCompanyName" ng-model="checkoutForm.shippingCompany"> -->
-
-              <p>Street address 1 *</p>
-              <input type="text" name="shippingStreetOneName" ng-model="checkoutForm.shippingStreetOne" validator="required" valid-method="blur">
-
-              <!-- <p>Street address 2</p>
-              <input type="text" name="shippingStreetTwoName" ng-model="checkoutForm.shippingStreetTwo"> -->
+              <p>Street address *</p>
+              <input type="text" name="shippingStreetName" ng-model="checkoutForm.shippingStreet" validator="required" valid-method="blur">
 
               <p>City *</p>
               <input type="text" name="shippingCityName" ng-model="checkoutForm.shippingCity" validator="required" valid-method="blur">
@@ -129,27 +117,30 @@
               Is this purchase a gift?
               <br>
               <form>
-                <input type="radio" name="isGift" value="yes" ng-click="isGift = true">&nbsp;Yes
+                <input class="small-input" type="radio" name="isGift" value="yes" ng-click="isGift = true">&nbsp;Yes
                 <br>
-                <input type="radio" name="isGift" value="no" ng-click="isGift = false">&nbsp;No
+                <input class="small-input" type="radio" name="isGift" value="no" ng-click="isGift = false">&nbsp;No
               </form>
             </p>
 
             <fieldset ng-if="isGift">
+              <legend>Gift information</legend>
               <p>Your gift will be sent without an invoice or price tag</p>
               <div>
-                <textarea style="width: 100%;" name="content" placeholder="enter an optional message for your gift"></textarea>
+                <textarea style="width: 100%;" name="giftName" ng-model="checkoutForm.gift" placeholder="enter an optional message for your gift" valid-method="blur"></textarea>
               </div>
             </fieldset>
 
             <p>
-              <input type="checkbox" checked>Sign up for our monthly newsletter
+              <input type="checkbox" class="small-input" checked>Sign up for our monthly newsletter
             </p>
+            <br>
 
             <button type="submit" ng-disabled="checkoutForm.$invalid || difAddress === undefined || isGift === undefined">BUY NOW</button>
           </div>
         </form>
         <br>
+        <p ng-if="results">The following object is available in the controller: {{results}}</p>
       </div>
     </div>
   </div>

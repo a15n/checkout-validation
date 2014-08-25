@@ -113,7 +113,7 @@ module.exports = function(grunt) {
     // Watches files and runs tasks (as defined below)
     regarde: {
       all: {
-        files: ['index.html', 'css/**/*.css', 'css/**/*.scss', 'js/**/*.js'],
+        files: ['index.html', 'navbar.html', 'css/**/*.css', 'css/**/*.scss', 'js/**/*.js'],
         tasks: ['sass','livereload']
       }
     },

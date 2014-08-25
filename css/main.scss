@@ -1,19 +1,23 @@
-.error {
-	color: red;
-}
+// variables
 
-datalist {
-	visibility:hidden;
-	white-space:nowrap;
-	overflow:scroll;
-}
+$red: #AC1F29;
+
+
+
+/*Page CSS*/
 
 body {
 	background-color: #EAE9E9;
 }
 
-.navbar {
+.nav-holder {
 	background-color: #AC1F29;
+	height: 50px;
+	margin: 0 -15px;
+}
+
+.navbar {
+	background-color: $red;
 	border-radius: 0;
 	border: none;
 	color: #ffffff;
@@ -25,17 +29,6 @@ body {
 	}
 }
 
-input {
-	border: 1px solid ;
-	border-radius: 4px;
-}
-
-.nav-holder {
-	background-color: #AC1F29;
-	height: 50px;
-	margin: 0 -15px;
-}
-
 legend {
 	margin-top: 10px
 }
@@ -44,9 +37,27 @@ p {
 	margin: 10px 0 0;
 }
 
+/*input and error styles*/
+
+input {
+	border: 1px solid black;
+	border-radius: 4px;
+	width: 200px;
+}
+
+.small-input {
+	width: 20px !important;
+}
+
+.error {
+	color: red;
+}
+
 .container {
 	background-color: white;
 }
+
+/*Fonts*/
 
 .bree-serif-22-white {
 	font-family: 'Bree Serif', Georgia, serif;
@@ -54,39 +65,3 @@ p {
 	line-height: 20px;
 	color: #ffffff !important;
 }
-
-/*
-font-family: Arial, Helvetica, sans-serif;
-font-size: 14px;
-line-height: 97px;
-color: #a32721;
-
-
-
-font-family: arial, Helvetica, sans-serif;
-font-size: 28px;
-line-height: 40px;
-color: #333333;
-
-font-family: Arial, Helvetica, sans-serif;
-font-size: 17px;
-line-height: 40px;
-color: #333333;
-
-font-family: Arial, Helvetica, sans-serif;
-font-size: 14px;
-line-height: 20px;
-color: #222222;
-
-font-family: Arial, Helvetica, sans-serif;
-font-size: 12px;
-line-height:20px;
-color: #ffffff;
-
-*/
-
-
-
-
-
-
