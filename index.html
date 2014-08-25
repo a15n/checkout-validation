@@ -17,36 +17,14 @@
 
   <!-- external JS -->
   <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.18/angular.min.js"></script>
-  <script src="js/angular-validation.js"></script>
-  <script src="js/angular-validation-rule.js"></script>
+
 
 </head>
 
 <body ng-app="checkoutForm">
   <div class="container" ng-controller="CheckoutController">
 
-    <nav class="navbar bree-serif-22-white" role="navigation">
-      <div class="container-fluid">
-        <div class="navbar-header">
-          <span class="navbar-brand bree-serif-22-white">Love with Food</span>
-        </div>
-        <div class="collapse navbar-collapse">
-          <ul class="nav navbar-nav navbar-right ">
-            <li>
-              <a href="#">About</a>
-            </li>
-            <li>
-              <a href="#">Snackbox</a>
-            </li>
-            <li>
-              <a href="#">Shop</a>
-            </li>
-            <li>
-              <a href="#">Recipes</a>
-            </li>
-        </div>
-      </div>
-    </nav>
+    <div navbar-template class="nav-holder"></div>
 
     <div class="row">
       <div class="col col-sm-offset-2 col-sm-8">
@@ -54,37 +32,121 @@
 
           <div class="col col-sm-12">
             <legend>Credit Card Details</legend>
+
+            <p>Credit card number *</p>
+            <input type="text" name="creditName" ng-model="checkoutForm.credit" validator="required, credit" valid-method="blur">
+
+            <p>Expiration *</p>
+            <input type="month" name="expirationName" ng-model="checkoutForm.expiration" validator="required" valid-method="blur">
+
             <p>CCV *</p>
             <input type="text" name="ccvName" ng-model="checkoutForm.ccv" validator="required, ccv" valid-method="blur">
 
             <p>Payment data is kept secure using strong encryption standards.</p>
 
-            <p>Credit card number *</p>
-            <input type="text" name="creditName" ng-model="checkoutForm.credit" validator="required, credit" valid-method="blur">
+            <legend>Billing Address</legend>
 
+            <p>First name *</p>
+            <input type="text" name="firstName" ng-model="checkoutForm.first" validator="required" valid-method="blur">
 
-            <div address-template ng-model="Billing"></div>
-            <p>
-              <input type="checkbox" checked>Sign up for our monthly newsletter
-            </p>
+            <p>Last name *</p>
+            <input type="text" name="lastName" ng-model="checkoutForm.last" validator="required" valid-method="blur">
+
+            <p>Company</p>
+            <input type="text" name="companyName" ng-model="checkoutForm.company">
+
+            <p>Street address 1 *</p>
+            <input type="text" name="streetOneName" ng-model="checkoutForm.streetOne" validator="required" valid-method="blur">
+
+            <p>Street address 2</p>
+            <input type="text" name="streetTwoName" ng-model="checkoutForm.streetTwo">
+
+            <p>City *</p>
+            <input type="text" name="cityName" ng-model="checkoutForm.city" validator="required" valid-method="blur">
+
+            <p>Country *</p>
+            <input type="text" name="countryName" ng-model="checkoutForm.country" validator="required" valid-method="blur">
+
+            <p>State *</p>
+            <input list="statesList" name="stateName" ng-model="checkoutForm.state" validator="required" valid-method="blur">
+            <datalist id="statesList">
+              <div ng-repeat="state in states">
+                <option value="{{state.value}}">{{state.name}}</option>
+              </div>
+            </datalist>
+
+            <p>Zip Code *</p>
+            <input type="text" name="required, zip" ng-model="checkoutForm.zip" validator="required, zip" valid-method="blur">
+
+            <p>Phone *</p>
+            <input type="text" name="phoneName" ng-model="checkoutForm.phone" validator="required, phone" valid-method="blur">
+
             <p>
               Shipping address same as billing address?
               <br>
               <form>
-                <input type="radio" name="difAddress" value="yes" ng-click="difAddress = false">Yes
+                <input type="radio" name="difAddress" value="yes" ng-click="difAddress = false">&nbsp;Yes
                 <br>
-                <input type="radio" name="difAddress" value="no" ng-click="difAddress = true">No
+                <input type="radio" name="difAddress" value="no" ng-click="difAddress = true">&nbsp;No
               </form>
             </p>
 
             <div ng-if="difAddress">
-              <div address-template ng-model="Shipping"></div>
+              <legend>Shipping Address</legend>
+
+              <p>First name *</p>
+              <input type="text" name="shippingFirstName" ng-model="checkoutForm.shippingFirst" validator="required" valid-method="blur">
+
+              <p>Last name *</p>
+              <input type="text" name="shippingLastName" ng-model="checkoutForm.shippingLast" validator="required" valid-method="blur">
+
+              <!-- <p>Company</p>
+              <input type="text" name="shippingCompanyName" ng-model="checkoutForm.shippingCompany"> -->
+
+              <p>Street address 1 *</p>
+              <input type="text" name="shippingStreetOneName" ng-model="checkoutForm.shippingStreetOne" validator="required" valid-method="blur">
+
+              <!-- <p>Street address 2</p>
+              <input type="text" name="shippingStreetTwoName" ng-model="checkoutForm.shippingStreetTwo"> -->
+
+              <p>City *</p>
+              <input type="text" name="shippingCityName" ng-model="checkoutForm.shippingCity" validator="required" valid-method="blur">
+
+              <p>State *</p>
+              <input list="statesList2" name="shippingStateName" ng-model="checkoutForm.shippingState" validator="required" valid-method="blur">
+              <datalist id="statesList2">
+                <div ng-repeat="state in states">
+                  <option value="{{state.value}}">{{state.name}}</option>
+                </div>
+              </datalist>
+
+              <p>Zip Code *</p>
+              <input type="text" name="shippingZipName" ng-model="checkoutForm.zip" validator="required, zip" valid-method="blur">
+
             </div>
 
-            <br>
+            <p>
+              Is this purchase a gift?
+              <br>
+              <form>
+                <input type="radio" name="isGift" value="yes" ng-click="isGift = true">&nbsp;Yes
+                <br>
+                <input type="radio" name="isGift" value="no" ng-click="isGift = false">&nbsp;No
+              </form>
+            </p>
 
-            <button type="submit" ng-disabled="checkoutForm.$invalid || difAddress === undefined">BUY NOW</button>
-            <div address></div>
+            <fieldset ng-if="isGift">
+              <p>Your gift will be sent without an invoice or price tag</p>
+              <div>
+                <textarea style="width: 100%;" name="content" placeholder="enter an optional message for your gift"></textarea>
+              </div>
+            </fieldset>
+
+            <p>
+              <input type="checkbox" checked>Sign up for our monthly newsletter
+            </p>
+
+            <button type="submit" ng-disabled="checkoutForm.$invalid || difAddress === undefined || isGift === undefined">BUY NOW</button>
           </div>
         </form>
         <br>
@@ -97,6 +159,8 @@
   <!-- build:js js/main.js -->
   <script src="js/main.js"></script>
   <script src="js/jquery.js"></script>
+  <script src="js/angular-validation.js"></script>
+  <script src="js/angular-validation-rule.js"></script>
   <!-- /build -->
 
 
