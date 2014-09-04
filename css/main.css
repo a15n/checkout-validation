@@ -1,53 +1,42 @@
 /*Page CSS*/
 body {
-  background-color: #EAE9E9;
-}
+  background-color: #EAE9E9; }
 
 .navbar {
   background-color: #ac1f29;
   margin: 0 -15px;
   border-radius: 0;
   border: none;
-  color: #ffffff;
-}
-.navbar a {
-  color: #ffffff;
-}
-.navbar a:hover, .navbar a:focus {
-  background-color: rgba(0, 0, 0, 0.5) !important;
-}
+  color: #ffffff; }
+  .navbar a {
+    color: #ffffff; }
+    .navbar a:hover, .navbar a:focus {
+      background-color: rgba(0, 0, 0, 0.5) !important; }
 
 legend {
-  margin-top: 10px;
-}
+  margin-top: 10px; }
 
 p {
-  margin: 10px 0 0;
-}
+  margin: 10px 0 0; }
 
 /*input and error styles*/
 input {
   border: 1px solid black;
   border-radius: 4px;
-  width: 200px;
-}
+  width: 200px; }
 
 .small-input {
-  width: 20px !important;
-}
+  width: 20px !important; }
 
 .error {
-  color: red !important;
-}
+  color: red !important; }
 
 .container {
-  background-color: white;
-}
+  background-color: white; }
 
 /*Fonts*/
 .bree-serif-22-white {
   font-family: 'Bree Serif', Georgia, serif;
   font-size: 22px;
   line-height: 20px;
-  color: #ffffff !important;
-}
+  color: #ffffff !important; }
